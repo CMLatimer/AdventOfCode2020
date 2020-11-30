@@ -1,0 +1,28 @@
+---
+output:
+  html_document: default
+  pdf_document: default
+---
+
+```{r}
+if (!require("pacman")) install.packages("pacman")
+pacman::p_load(tidyverse)
+```
+
+```{Rcpp, ref.label=knitr::all_rcpp_labels(), include=FALSE}
+```
+
+```{Rcpp, eval=FALSE}
+#include <Rcpp.h>
+```
+
+```{Rcpp, eval=FALSE}
+// [[Rcpp::export]]
+int timesTwo(int x) {
+  return x * 2;
+}
+```
+
+```{r}
+timesTwo(5)
+```
