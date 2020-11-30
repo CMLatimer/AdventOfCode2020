@@ -1,0 +1,18 @@
+
+```{r}
+if (!require("pacman")) install.packages("pacman")
+pacman::p_load(tidyverse)
+```
+
+```{Rcpp}
+#include <Rcpp.h>
+
+// [[Rcpp::export]]
+int timesTwo(int x) {
+  return x * 2;
+}
+```
+
+```{r}
+timesTwo(5)
+```
