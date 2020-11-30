@@ -1,11 +1,6 @@
-```{r}
-if (!require("pacman")) install.packages("pacman")
-pacman::p_load(tidyverse)
-```
-
-```{Rcpp}
 #include <Rcpp.h>
 using namespace Rcpp;
+
 // [[Rcpp::export]]
 int divideTwoIfEven(int x) {
   if(x % 2 == 0) {
@@ -33,9 +28,24 @@ int addOneIfOdd(int x) {
 Rcpp::IntegerVector addOneIfOddVector(Rcpp::IntegerVector x) {
   return sapply(x, addOneIfOdd);
 }
-```
 
-```{r}
-divideTwoIfEvenVector(c(1,2,3,4,5))
-addOneIfOddVector(c(1,2,3,4,5))
-```
+
+// [[Rcpp::export]]
+int divideTenIfTens(int x){
+  if(x % 10 == 0) {
+    return x / 10;
+  } else {
+    return x;
+  }
+}
+
+// [[Rcpp::export]]
+Rcpp::IntegerVector divideTenIfTensVector(Rcpp::IntegerVector x) {
+  return sapply(x, divideTenIfTens);
+}
+
+/*** R
+divideTwoIfEvenVector(seq(1:100))
+addOneIfOddVector(seq(1:100))
+divideTenIfTensVector(seq(1:100))
+*/
