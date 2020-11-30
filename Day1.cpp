@@ -44,6 +44,7 @@ Rcpp::IntegerVector divideTenIfTensVector(Rcpp::IntegerVector x) {
   return sapply(x, divideTenIfTens);
 }
 
+
 /*** R
 divideTwoIfEvenVector(seq(1:100))
 addOneIfOddVector(seq(1:100))
