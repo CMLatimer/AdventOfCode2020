@@ -5,12 +5,37 @@ pacman::p_load(tidyverse)
 
 ```{Rcpp}
 #include <Rcpp.h>
+using namespace Rcpp;
 // [[Rcpp::export]]
-int timesTwo(int x) {
-  return x * 2;
+int divideTwoIfEven(int x) {
+  if(x % 2 == 0) {
+    return x/2;
+  } else {
+    return x;
+  }
+}
+
+// [[Rcpp::export]]
+Rcpp::IntegerVector divideTwoIfEvenVector(Rcpp::IntegerVector x) {
+  return sapply(x, divideTwoIfEven);
+}
+
+// [[Rcpp::export]]
+int addOneIfOdd(int x) {
+  if(x % 2 != 0) {
+    return x + 1;
+  } else {
+    return x;
+  }
+}
+
+// [[Rcpp::export]]
+Rcpp::IntegerVector addOneIfOddVector(Rcpp::IntegerVector x) {
+  return sapply(x, addOneIfOdd);
 }
 ```
 
 ```{r}
-timesTwo(5)
+divideTwoIfEvenVector(c(1,2,3,4,5))
+addOneIfOddVector(c(1,2,3,4,5))
 ```
