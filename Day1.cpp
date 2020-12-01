@@ -16,7 +16,7 @@ int part1(Rcpp::NumericVector x, int val = 2020){
   }
   return 0;
 }
- 
+
 // Part 2
 // [[Rcpp::export]]
 int part2(Rcpp::NumericVector x, int val = 2020){
@@ -37,7 +37,7 @@ int part2(Rcpp::NumericVector x, int val = 2020){
   }
   return 0;
 }
-  
+
 /*** R
 data = scan("Day1.txt")
 part1(data)
